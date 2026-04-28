@@ -1,0 +1,46 @@
+.app-header {
+  height: 52px;
+  background: #fff;
+  border-bottom: 0.5px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.brand-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: -0.3px;
+}
+
+.nav-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  padding: 0 12px;
+  height: 100%;
+  font-size: 13px;
+  font-weight: 400;
+  color: #6b7280;
+  transition: all 0.15s;
+}
+
+@media (min-width: 576px) {
+  .nav-tab {
+    padding: 0 18px;
+    font-size: 13.5px;
+  }
+}
+
+.nav-tab--active {
+  font-weight: 500;
+  color: #185FA5;
+  border-bottom-color: #185FA5;
+}
+
+.nav-tab:not(.nav-tab--active):hover {
+  color: #374151;
+}

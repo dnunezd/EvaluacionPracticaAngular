@@ -1,0 +1,122 @@
+.users-panel {
+  width: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  border-bottom: 0.5px solid #e5e7eb;
+}
+
+@media (min-width: 768px) {
+  .users-panel {
+    width: 38%;
+    border-right: 0.5px solid #e5e7eb;
+    border-bottom: none;
+    height: calc(100vh - 52px);
+    overflow-y: auto;
+  }
+}
+
+.panel-header {
+  padding: 16px 16px 10px;
+  position: sticky;
+  top: 52px;
+  background: #fff;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .panel-header {
+    top: 0;
+    padding: 20px 20px 12px;
+  }
+}
+
+.panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.count-badge {
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 11px;
+  padding: 1px 8px;
+  border-radius: 20px;
+}
+
+.user-item {
+  padding: 10px 16px;
+  box-shadow: inset 3px 0 0 transparent;
+  cursor: pointer;
+  transition: background 0.1s, box-shadow 0.1s;
+}
+
+@media (min-width: 768px) {
+  .user-item {
+    padding: 10px 20px;
+  }
+}
+
+.user-item:hover {
+  background: #f9fafb;
+}
+
+.user-item--selected {
+  background: #eff6ff;
+  box-shadow: inset 3px 0 0 #185FA5;
+}
+
+.user-item--selected:hover {
+  background: #eff6ff;
+  box-shadow: inset 5px 0 0 #185FA5;
+}
+
+.user-item__username {
+  font-size: 13px;
+  color: #111827;
+}
+
+.avatar--sm {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
+
+.role-badge {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.role-badge--admin {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.role-badge--developer {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.role-badge--designer {
+  background: #f3e8ff;
+  color: #6b21a8;
+}
+
+@media (min-width: 768px) {
+  .users-panel::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .users-panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .users-panel::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+  }
+
+  .users-panel::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+}

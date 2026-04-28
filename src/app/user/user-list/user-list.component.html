@@ -1,0 +1,17 @@
+<div class="users-panel">
+  <div class="panel-header d-flex align-items-center gap-2">
+    <span class="panel-title">Usuarios</span>
+    <span class="count-badge">{{ users.length }}</span>
+  </div>
+
+  <div
+    *ngFor="let user of users"
+    class="user-item d-flex align-items-center gap-2"
+    [class.user-item--selected]="selectedUser?.id === user.id"
+    (click)="selectUser(user)"
+  >
+    <img [src]="user.avatarUrl" [alt]="user.username" class="avatar avatar--sm rounded-circle flex-shrink-0" />
+    <span class="user-item__username flex-grow-1 text-truncate">{{ user.username }}</span>
+    <span class="role-badge badge rounded-pill flex-shrink-0" [ngClass]="'role-badge--' + user.role">{{ user.role }}</span>
+  </div>
+</div>
