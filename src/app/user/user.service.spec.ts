@@ -52,4 +52,29 @@ describe('UserService', () => {
       expect(result).toEqual([]);
     });
   });
+
+  describe('getUser', () => {
+    it('should make a GET request to the users endpoint', () => {
+      service.getUser(1).subscribe();
+      const req = httpMock.expectOne(environment.baseUrl + 'users.json');
+      expect(req.request.method).toBe('GET');
+      req.flush([]);
+    });
+
+    it('should return the matching user by id', () => {
+      let result: User | undefined;
+      service.getUser(2).subscribe(u => (result = u));
+      const req = httpMock.expectOne(environment.baseUrl + 'users.json');
+      req.flush(mockUsers);
+      expect(result).toEqual(mockUsers[1]);
+    });
+
+    it('should return undefined when the id is not found', () => {
+      let result: User | undefined = mockUsers[0];
+      service.getUser(999).subscribe(u => (result = u));
+      const req = httpMock.expectOne(environment.baseUrl + 'users.json');
+      req.flush(mockUsers);
+      expect(result).toBeUndefined();
+    });
+  });
 });

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { of } from 'rxjs';
 import { RepositoryListComponent } from './repository-list.component';
@@ -22,7 +23,7 @@ describe('RepositoryListComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [RepositoryListComponent],
-      imports: [CommonModule, NgxPaginationModule],
+      imports: [CommonModule, RouterTestingModule, NgxPaginationModule],
       providers: [{ provide: RepositoryService, useValue: repositoryServiceSpy }]
     }).compileComponents();
 

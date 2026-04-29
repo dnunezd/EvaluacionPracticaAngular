@@ -1,0 +1,48 @@
+<div class="detail-page">
+
+  <div class="d-flex align-items-center gap-3 mb-4">
+    <button class="btn-back" (click)="goBack()">← Volver</button>
+    <nav class="breadcrumb-nav">
+      <span class="bc-link" [routerLink]="'/repositories'">Repositorios</span>
+      <span class="mx-2">›</span>
+      <span class="fw-medium bc-current">{{ repo?.name }}</span>
+    </nav>
+  </div>
+
+  <div *ngIf="repo">
+
+    <div class="info-card mb-3">
+      <div class="field-label">Nombre del repositorio</div>
+      <h1 class="fs-4 fw-semibold text-dark mb-2">{{ repo.name }}</h1>
+      <div class="field-label mt-3">Descripción</div>
+      <p class="repo-desc mb-0">{{ repo.description }}</p>
+      <div class="field-label mt-3 mb-2">Lenguaje principal</div>
+      <span class="lang-badge" [ngStyle]="getLangStyle(repo.language)">{{ repo.language }}</span>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-4">
+        <div class="stat-card text-center">
+          <div class="field-label mb-2">★ Estrellas totales</div>
+          <div class="fs-5 fw-semibold text-dark">{{ repo.stars }}</div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="stat-card text-center">
+          <div class="field-label mb-2">📅 Fecha de creación</div>
+          <div class="fs-5 fw-semibold text-dark">{{ repo.createdAt | date:'d MMM y' }}</div>
+        </div>
+      </div>
+      <div class="col-4" *ngIf="owner">
+        <div class="stat-card d-flex flex-column align-items-center gap-2 text-center">
+          <div class="field-label">👤 Propietario</div>
+          <img [src]="owner.avatarUrl" [alt]="owner.username" class="owner-avatar rounded-circle" />
+          <div class="owner-name">{{ owner.name }}</div>
+          <div class="owner-username">{{ owner.username }}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

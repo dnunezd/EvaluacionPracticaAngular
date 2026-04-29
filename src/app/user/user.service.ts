@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { User } from './user';
 
@@ -14,5 +15,11 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl);
+  }
+
+  getUser(id: number): Observable<User> {
+    return this.http.get<User[]>(this.usersUrl).pipe(
+      map(users => users.find(u => u.id === id) as User)
+    );
   }
 }

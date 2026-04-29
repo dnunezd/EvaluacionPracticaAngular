@@ -1,7 +1,7 @@
 <div class="repo-page">
 
   <div class="d-flex align-items-center gap-2 mb-3">
-    <h2 class="repo-title mb-0">Repositorios</h2>
+    <h2 class="fs-5 fw-semibold text-dark mb-0">Repositorios</h2>
     <span class="count-badge">{{ repos.length }} repositorios</span>
   </div>
 
@@ -9,6 +9,7 @@
     <div
       *ngFor="let repo of repos | paginate: { itemsPerPage: itemsPerPage, currentPage: page }"
       class="repo-card"
+      [routerLink]="['/repositories', repo.id]"
     >
       <div class="repo-card__top mb-1">
         <span class="repo-name">{{ repo.name }}</span>

@@ -4,12 +4,6 @@
   min-height: calc(100vh - 52px);
 }
 
-.repo-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: #111827;
-}
-
 .count-badge {
   background: #f3f4f6;
   color: #6b7280;
@@ -37,14 +31,6 @@
   font-size: 14px;
   font-weight: 600;
   color: #185FA5;
-}
-
-.lang-badge {
-  font-size: 11px;
-  font-weight: 500;
-  padding: 2px 8px;
-  border-radius: 20px;
-  display: inline-block;
 }
 
 .repo-stars {

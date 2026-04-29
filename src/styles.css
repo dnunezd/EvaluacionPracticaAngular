@@ -12,3 +12,11 @@ body {
 .role-badge--admin     { background: #dbeafe; color: #1e40af; }
 .role-badge--developer { background: #dcfce7; color: #166534; }
 .role-badge--designer  { background: #f3e8ff; color: #6b21a8; }
+
+.lang-badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 20px;
+  display: inline-block;
+}

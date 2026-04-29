@@ -52,4 +52,29 @@ describe('RepositoryService', () => {
       expect(result).toEqual([]);
     });
   });
+
+  describe('getRepository', () => {
+    it('should make a GET request to the repositories endpoint', () => {
+      service.getRepository(1).subscribe();
+      const req = httpMock.expectOne(environment.baseUrl + 'repositories.json');
+      expect(req.request.method).toBe('GET');
+      req.flush([]);
+    });
+
+    it('should return the matching repository by id', () => {
+      let result: Repository | undefined;
+      service.getRepository(2).subscribe(r => (result = r));
+      const req = httpMock.expectOne(environment.baseUrl + 'repositories.json');
+      req.flush(mockRepos);
+      expect(result).toEqual(mockRepos[1]);
+    });
+
+    it('should return undefined when the id is not found', () => {
+      let result: Repository | undefined = mockRepos[0];
+      service.getRepository(999).subscribe(r => (result = r));
+      const req = httpMock.expectOne(environment.baseUrl + 'repositories.json');
+      req.flush(mockRepos);
+      expect(result).toBeUndefined();
+    });
+  });
 });
