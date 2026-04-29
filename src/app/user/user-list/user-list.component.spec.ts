@@ -1,9 +1,16 @@
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { of } from 'rxjs';
 import { UserListComponent } from './user-list.component';
 import { UserService } from '../user.service';
 import { User } from '../user';
+
+@Component({ selector: 'app-user-detail', template: '', standalone: false })
+class UserDetailStubComponent {
+  @Input() user: User | null = null;
+  @Output() closed = new EventEmitter<void>();
+}
 
 const mockUsers: User[] = [
   new User(1, 'alice', 'Alice Smith', 'alice@example.com', 'https://i.pravatar.cc/150?img=1', 'admin', 'New York', [1, 2]),
@@ -20,7 +27,7 @@ describe('UserListComponent', () => {
     userServiceSpy.getUsers.and.returnValue(of(mockUsers));
 
     await TestBed.configureTestingModule({
-      declarations: [UserListComponent],
+      declarations: [UserListComponent, UserDetailStubComponent],
       imports: [CommonModule],
       providers: [{ provide: UserService, useValue: userServiceSpy }]
     }).compileComponents();
@@ -66,6 +73,14 @@ describe('UserListComponent', () => {
       component.selectUser(mockUsers[0]);
       component.selectUser(mockUsers[0]);
       expect(component.selectedUser).toEqual(mockUsers[0]);
+    });
+  });
+
+  describe('closeDetail', () => {
+    it('should clear the selected user', () => {
+      component.selectUser(mockUsers[0]);
+      component.closeDetail();
+      expect(component.selectedUser).toBeNull();
     });
   });
 

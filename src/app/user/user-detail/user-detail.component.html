@@ -1,0 +1,40 @@
+<div *ngIf="!user" class="empty-state d-flex flex-column align-items-center justify-content-center gap-3">
+  <i class="bi bi-person empty-state__icon"></i>
+  <span class="empty-state__text">Selecciona un usuario para ver su detalle</span>
+</div>
+
+<div *ngIf="user" class="detail-content">
+  <button class="btn close-btn d-flex align-items-center justify-content-center rounded-2 border" (click)="closed.emit()">
+    <i class="bi bi-x"></i>
+  </button>
+
+  <div class="d-flex flex-column align-items-center gap-2 mb-4">
+    <img [src]="user.avatarUrl" [alt]="user.username" class="detail-avatar rounded-circle" />
+    <div class="detail-name">{{ user.name }}</div>
+    <div class="detail-username">{{ user.username }}</div>
+    <span class="role-badge badge rounded-pill" [ngClass]="'role-badge--' + user.role">{{ user.role }}</span>
+  </div>
+
+  <div class="info-section d-flex flex-column gap-2 mb-4">
+    <div class="info-row d-flex align-items-center gap-2">
+      <i class="bi bi-geo-alt info-row__icon"></i>
+      <span class="info-row__label">Ubicación</span>
+      <span class="info-row__value">{{ user.location }}</span>
+    </div>
+    <div class="info-row d-flex align-items-center gap-2">
+      <i class="bi bi-envelope info-row__icon"></i>
+      <span class="info-row__label">Email</span>
+      <span class="info-row__value">{{ user.email }}</span>
+    </div>
+  </div>
+
+  <div class="repos-section mb-4">
+    <div class="repos-section__title">Repositorios</div>
+    <div class="repos-card d-flex align-items-center gap-3">
+      <span class="repos-card__count">{{ user.repoIds.length }}</span>
+      <span class="repos-card__label">
+        {{ user.repoIds.length === 1 ? 'repositorio activo' : 'repositorios activos' }}
+      </span>
+    </div>
+  </div>
+</div>

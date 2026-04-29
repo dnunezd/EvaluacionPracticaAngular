@@ -26,5 +26,8 @@ export class UserListComponent implements OnInit {
       this.selectedUser = user;
     }
   }
-  
+
+  closeDetail(): void {
+    this.selectedUser = null;
+  }
 }
