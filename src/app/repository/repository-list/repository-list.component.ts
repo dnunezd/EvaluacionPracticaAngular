@@ -11,7 +11,7 @@ import { Repository } from '../repository';
 export class RepositoryListComponent implements OnInit {
   repos: Repository[] = [];
   page: number = 1;
-  readonly itemsPerPage: number = 5;
+  readonly itemsPerPage: number = 8;
 
   private readonly langStyles: { [key: string]: { bg: string; text: string } } = {
     'TypeScript': { bg: '#dbeafe', text: '#1e40af' },

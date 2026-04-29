@@ -20,6 +20,8 @@
   background: #fff;
   cursor: pointer;
   transition: border-color 0.15s, background 0.15s;
+  display: flex;
+  flex-direction: column;
 }
 
 .repo-card:hover {
@@ -31,6 +33,13 @@
   font-size: 14px;
   font-weight: 600;
   color: #185FA5;
+}
+
+.repo-desc {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0 0 8px;
+  flex-grow: 1;
 }
 
 .repo-stars {

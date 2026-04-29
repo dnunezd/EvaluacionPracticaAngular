@@ -8,8 +8,9 @@ import { RepositoryService } from '../repository.service';
 import { Repository } from '../repository';
 
 const mockRepos: Repository[] = [
-  new Repository(1, 'repo-one', 'First repo', 'TypeScript', 10, 1, '2025-01-01'),
-  new Repository(2, 'repo-two', 'Second repo', 'Python', 5, 2, '2025-06-15'),
+  new Repository(1, 'repo-one',   'First repo',  'TypeScript', 10, 1, '2025-01-01'),
+  new Repository(2, 'repo-two',   'Second repo', 'Python',      5, 2, '2025-06-15'),
+  new Repository(3, 'repo-three', 'Third repo',  'Go',         20, 3, '2025-07-01'),
 ];
 
 describe('RepositoryListComponent', () => {
@@ -52,6 +53,12 @@ describe('RepositoryListComponent', () => {
     });
   });
 
+  describe('itemsPerPage', () => {
+    it('should be 8', () => {
+      expect(component.itemsPerPage).toBe(8);
+    });
+  });
+
   describe('getLangStyle', () => {
     it('should return the correct colors for a known language', () => {
       const style = component.getLangStyle('TypeScript');
@@ -83,6 +90,12 @@ describe('RepositoryListComponent', () => {
       const names = fixture.nativeElement.querySelectorAll('.repo-name');
       expect(names[0].textContent?.trim()).toBe(mockRepos[0].name);
       expect(names[1].textContent?.trim()).toBe(mockRepos[1].name);
+    });
+
+    it('should display each repository description', () => {
+      const descs = fixture.nativeElement.querySelectorAll('.repo-desc');
+      expect(descs[0].textContent?.trim()).toBe(mockRepos[0].description);
+      expect(descs[1].textContent?.trim()).toBe(mockRepos[1].description);
     });
 
     it('should display the language badge for each repository', () => {

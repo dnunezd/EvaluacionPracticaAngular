@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css',
   standalone: false
 })
-export class AppComponent {
-  title = 'prueba';
-}
+export class AppComponent {}

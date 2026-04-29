@@ -5,18 +5,17 @@
     <span class="count-badge">{{ repos.length }} repositorios</span>
   </div>
 
-  <div class="d-flex flex-column gap-2 mb-4">
-    <div
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3 mb-4">
+    <div class="col"
       *ngFor="let repo of repos | paginate: { itemsPerPage: itemsPerPage, currentPage: page }"
-      class="repo-card"
-      [routerLink]="['/repositories', repo.id]"
     >
-      <div class="repo-card__top mb-1">
-        <span class="repo-name">{{ repo.name }}</span>
-      </div>
-      <div class="d-flex align-items-center gap-3 flex-wrap">
-        <span class="lang-badge" [ngStyle]="getLangStyle(repo.language)">{{ repo.language }}</span>
-        <span class="repo-stars">★ {{ repo.stars }}</span>
+      <div class="repo-card h-100" [routerLink]="['/repositories', repo.id]">
+        <div class="repo-name mb-2">{{ repo.name }}</div>
+        <p class="repo-desc">{{ repo.description }}</p>
+        <div class="d-flex align-items-center gap-2 flex-wrap mt-auto">
+          <span class="lang-badge" [ngStyle]="getLangStyle(repo.language)">{{ repo.language }}</span>
+          <span class="repo-stars ms-auto">★ {{ repo.stars }}</span>
+        </div>
       </div>
     </div>
   </div>
