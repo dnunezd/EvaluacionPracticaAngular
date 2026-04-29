@@ -26,10 +26,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('prueba');
   });
 
-  it('should render title', () => {
+  it('should render the brand name', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, prueba');
+    expect(compiled.querySelector('.brand-name')?.textContent?.trim()).toBe('Project Explorer');
   });
 });
